@@ -21,12 +21,24 @@ const CountersList = () => {
     setCounters(initalState);
   };
 
-  const hanldePlus = () => {
-    setCounters(initalState.value + 1);
+  const hanldePlus = (id) => {
+    setCounters(
+      initalState.map((el) => {
+        if (el.id === id) {
+          el.value += 1;
+        }
+      })
+    );
   };
 
-  const hanldeMinus = () => {
-    setCounters(initalState.value - 1);
+  const hanldeMinus = (id) => {
+    setCounters(
+      initalState.map((el) => {
+        if (el.id === id) {
+          el.value -= 1;
+        }
+      })
+    );
   };
 
   return (
