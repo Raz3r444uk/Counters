@@ -13,7 +13,7 @@ const CountersList = () => {
   const [counters, setCounters] = useState(initalState);
 
   const handleDelete = (id) => {
-    const newCounters = counters.filter((counter) => counter.id != id);
+    const newCounters = counters.filter((counter) => counter.id !== id);
     setCounters(newCounters);
   };
 
@@ -21,24 +21,18 @@ const CountersList = () => {
     setCounters(initalState);
   };
 
-  const hanldePlus = (id) => {
-    setCounters(
-      initalState.map((el) => {
-        if (el.id === id) {
-          el.value += 1;
-        }
-      })
-    );
+  const handlePlus = (id) => {
+    const index = counters.findIndex((el) => el.id === id);
+    const newCounters = [...counters];
+    newCounters[index].value++;
+    setCounters(newCounters);
   };
 
-  const hanldeMinus = (id) => {
-    setCounters(
-      initalState.map((el) => {
-        if (el.id === id) {
-          el.value -= 1;
-        }
-      })
-    );
+  const handleMinus = (id) => {
+    const index = counters.findIndex((el) => el.id === id);
+    const newCounters = [...counters];
+    newCounters[index].value--;
+    setCounters(newCounters);
   };
 
   return (
@@ -47,8 +41,8 @@ const CountersList = () => {
         <Counter
           key={count.id}
           onDelete={handleDelete}
-          onIncrement={hanldePlus}
-          onDecrement={hanldeMinus}
+          onIncrement={handlePlus}
+          onDecrement={handleMinus}
           {...count}
         />
       ))}

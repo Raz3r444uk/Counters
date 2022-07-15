@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 
 const Counter = (props) => {
-  console.log(props);
   const { value } = props;
 
   const formatValue = () => {
@@ -14,12 +13,12 @@ const Counter = (props) => {
     return classes;
   };
 
-  const handleIncrement = (id) => {
-    props.onIncrement(id);
+  const handleIncrement = () => {
+    props.onIncrement(props.id);
   };
 
-  const handleDecrement = (id) => {
-    props.onDecrement(id);
+  const handleDerement = () => {
+    props.onDecrement(props.id);
   };
 
   return (
@@ -29,7 +28,7 @@ const Counter = (props) => {
       <button className="btn btn-primary btn-sm m-2" onClick={handleIncrement}>
         +
       </button>
-      <button className="btn btn-primary btn-sm m-2" onClick={handleDecrement}>
+      <button className="btn btn-primary btn-sm m-2" onClick={handleDerement}>
         -
       </button>
 
